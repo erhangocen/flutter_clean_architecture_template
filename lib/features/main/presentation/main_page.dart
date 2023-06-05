@@ -2,6 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
+import 'package:student_app/app/student_app.dart';
+import 'package:student_app/app/student_app_cubit.dart';
 import '../../../app/app_router.dart';
 import '../../teachers/presentation/cubit/teacher_cubit.dart';
 
@@ -40,7 +42,11 @@ class _MainPageUIState extends State<MainPageUI> {
         title: const Text("title"),
         centerTitle: true,
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.dark_mode))
+          IconButton(
+              onPressed: () {
+                context.read<StudentAppCubit>().changeTheme();
+              },
+              icon: const Icon(Icons.dark_mode))
         ],
       ),
       drawer: const _MainDrawer(),
@@ -50,7 +56,7 @@ class _MainPageUIState extends State<MainPageUI> {
           children: [
             TextButton(
                 onPressed: () {
-                  
+                  context.router.push(const LoginRoute());
                 },
                 child: Text(
                   "5 New Messages",
@@ -76,7 +82,9 @@ class _MainPageUIState extends State<MainPageUI> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () {}),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        context.read<StudentAppCubit>().changeLocale(LocaleKeys.tr);
+      }),
     );
   }
 }

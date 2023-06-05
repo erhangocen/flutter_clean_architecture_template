@@ -3,6 +3,7 @@ import 'package:student_app/core/presentation/base_view_model.dart';
 import '../../../domain/models/request/teacher_request.dart';
 import '../../../domain/models/response/teacher_response.dart';
 
+@immutable
 class TeacherViewModel extends BaseViewModel {
   TeacherViewModel(
       {isLoading = false,

@@ -10,7 +10,7 @@ import '../../data/repositories/teacher_repository.dart';
 import '../../../../product/models/response_data.dart';
 import '../../domain/models/request/teacher_request.dart';
 import '../../domain/models/response/teacher_response.dart';
-import 'viewModel/teacher_view_model.dart';
+import 'view_model/teacher_view_model.dart';
 
 class TeacherCubit extends BaseCubit<TeacherViewModel> {
   TeacherCubit()
@@ -93,7 +93,8 @@ class TeacherCubit extends BaseCubit<TeacherViewModel> {
       await _teacherCacheManager.clearAll();
       await _teacherCacheManager
           .addItems(teachers)
-          .then((value) => emit(state.copyWith(teacherList: teachers)));
+          .then((value) => emit(state.copyWith(teacherList: teachers)))
+          .catchError((onError) => print(onError));
     }
     changeIsLoading();
   }
@@ -106,7 +107,7 @@ class TeacherCubit extends BaseCubit<TeacherViewModel> {
     changeIsLoading();
     state.formKey.currentState!.save();
     ResponseData? response =
-        await _teacherRepository.addTeacher(state.teacherRequest.toJson());
+        await _teacherRepository.addTeacher(state.teacherRequest);
     print(response);
     changeIsLoading();
     /* inspect(state.teacherRequest.toJson()); */

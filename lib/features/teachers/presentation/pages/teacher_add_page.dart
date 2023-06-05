@@ -2,10 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
-import '../../../../product/mixins/sheet_mixin.dart';
 import '../../domain/models/response/teacher_response.dart';
 import '../cubit/teacher_cubit.dart';
-import '../cubit/viewModel/teacher_view_model.dart';
+import '../cubit/view_model/teacher_view_model.dart';
 
 @RoutePage()
 class TeacherAddPage extends StatelessWidget {
@@ -20,7 +19,7 @@ class TeacherAddPage extends StatelessWidget {
   }
 }
 
-class TeacherAddPageUI extends StatelessWidget with ProductSheetMixin {
+class TeacherAddPageUI extends StatelessWidget {
   const TeacherAddPageUI({super.key});
 
   @override
@@ -158,6 +157,11 @@ class _TecherSelectionListState extends State<TecherSelectionList> {
     super.initState();
     teacherList = widget.teacherList;
     searchList = teacherList;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   void searchTeacher(String searchText) {

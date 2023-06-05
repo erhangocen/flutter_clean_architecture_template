@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:student_app/features/teachers/presentation/cubit/viewModel/add_teacher_view_model.dart';
+import 'package:student_app/features/teachers/presentation/cubit/view_model/add_teacher_view_model.dart';
 import '../../../../app/base_cubit.dart';
 import '../../../../product/di/injection.dart';
 import '../../data/repositories/teacher_repository.dart';
@@ -33,7 +33,7 @@ class TeacherAddCubit extends BaseCubit<AddTeacherViewModel> {
     changeIsLoading();
     state.formKey.currentState!.save();
     ResponseData? response =
-        await _teacherRepository.addTeacher(state.teacherRequest.toJson());
+        await _teacherRepository.addTeacher(state.teacherRequest);
     print(response);
     changeIsLoading();
     /* inspect(state.teacherRequest.toJson()); */

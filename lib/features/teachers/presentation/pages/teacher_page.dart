@@ -1,13 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kartal/kartal.dart';
-import 'package:student_app/features/teachers/presentation/cubit/viewModel/teacher_view_model.dart';
+import 'package:student_app/features/teachers/presentation/cubit/view_model/teacher_view_model.dart';
 import '../cubit/teacher_cubit.dart';
 import '../../../../product/mixins/sheet_mixin.dart';
 import '../../../../product/widgets/user_list.dart';
-import '../cubit/teacher_add_cubit.dart';
-import '../cubit/viewModel/add_teacher_view_model.dart';
 
 @RoutePage()
 class TeacherPage extends StatelessWidget {
@@ -87,7 +84,7 @@ class TeacherPageUI extends StatelessWidget with ProductSheetMixin {
                 child: Form(
                   key: state.formKey,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlign5ment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Padding(

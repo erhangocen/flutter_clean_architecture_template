@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'teacher_service.dart';
+part of 'login_service.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'teacher_service.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _TeacherManager implements TeacherManager {
-  _TeacherManager(
+class _LoginManager implements LoginManager {
+  _LoginManager(
     this._dio, {
     this.baseUrl,
   });
@@ -19,53 +19,52 @@ class _TeacherManager implements TeacherManager {
   String? baseUrl;
 
   @override
-  Future<List<TeacherResponse>?> getAllTeachers() async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<List<dynamic>>(_setStreamType<List<TeacherResponse>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/teachers/getAll',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data
-        ?.map(
-            (dynamic i) => TeacherResponse.fromJson(i as Map<String, dynamic>))
-        .toList();
-    return value;
-  }
-
-  @override
-  Future<ResponseData?> addTeacher(TeacherRequest teacher) async {
+  Future<LoginResponse?> login(LoginRequest loginRequest) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(teacher.toJson());
+    _data.addAll(loginRequest.toJson());
     final _result = await _dio
-        .fetch<Map<String, dynamic>?>(_setStreamType<ResponseData>(Options(
+        .fetch<Map<String, dynamic>?>(_setStreamType<LoginResponse>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/teachers/add',
+              '/auth/login',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value =
-        _result.data == null ? null : ResponseData.fromJson(_result.data!);
+        _result.data == null ? null : LoginResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<RefreshResponse?> refresh(RefreshRequest refreshRequest) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(refreshRequest.toJson());
+    final _result = await _dio
+        .fetch<Map<String, dynamic>?>(_setStreamType<RefreshResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/auth/token',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value =
+        _result.data == null ? null : RefreshResponse.fromJson(_result.data!);
     return value;
   }
 

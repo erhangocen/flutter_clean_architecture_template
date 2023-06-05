@@ -1,11 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'jwt_response.dart';
+part of 'login_request.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-JWTResponse _$JWTResponseFromJson(Map<String, dynamic> json) => JWTResponse(
-      token: json['token'] as String?,
-    );
+Map<String, dynamic> _$LoginRequestToJson(LoginRequest instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+    };

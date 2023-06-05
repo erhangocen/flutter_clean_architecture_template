@@ -1,4 +1,5 @@
 import 'package:injectable/injectable.dart';
+import 'package:student_app/features/teachers/domain/models/request/teacher_request.dart';
 
 import '../../../../core/error/error_extension.dart';
 import '../../../../core/error/error_separator.dart';
@@ -8,7 +9,7 @@ import '../../../../product/models/response_data.dart';
 
 abstract class ITeacherRepository {
   Future<List<TeacherResponse>?> getAllTeachers();
-  Future<ResponseData?> addTeacher(Map<String, dynamic> teacherRequest);
+  Future<ResponseData?> addTeacher(TeacherRequest teacherRequest);
 }
 
 @Injectable(as: ITeacherRepository)
@@ -25,7 +26,7 @@ class TeacherRepository implements ITeacherRepository {
   }
 
   @override
-  Future<ResponseData?> addTeacher(Map<String, dynamic> teacherRequest) async {
+  Future<ResponseData?> addTeacher(TeacherRequest teacherRequest) async {
     return await _teacherService.addTeacher(teacherRequest).catchError(
         (error) => throw _errorSeparator
             .createError(error, StackTrace.current)
